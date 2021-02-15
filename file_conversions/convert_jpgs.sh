@@ -5,6 +5,6 @@
 
 RES=1024x768
 
-for file in `ls *.jpg` ; do
+for file in `ls [^resized]*.jpg` ; do
 convert -size $RES $file -resize $RES +profile '*' resized_$file
 done
