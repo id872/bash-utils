@@ -14,8 +14,10 @@ GIT_DIR="/home/me/programming/!git_repos"
 AND_DIR="/home/me/AndroidStudioProjects"
 PYC_DIR="/home/me/programming/PycharmProjects"
 
-ALL_DIR="${BCK_DIR} ${CFG_DIR} ${DOC_DIR} ${SCR_DIR} ${GIT_DIR} ${AND_DIR} ${PYC_DIR}"
+# File/Dir exclude from backups directory (example)
+$BCK_EXCLUDE="--exclude Name*"
+ALL_DIR="$BCK_EXCLUDE $BCK_DIR $CFG_DIR $DOC_DIR $SCR_DIR $GIT_DIR $AND_DIR $PYC_DIR"
 
-ls ${ALL_DIR} >/dev/null 2>&1 && $RSYNC_CMD $ALL_DIR ./ && echo BACKUP DONE && exit
+ls $ALL_DIR >/dev/null 2>&1 && $RSYNC_CMD $ALL_DIR ./ && echo BACKUP DONE && exit
 
 echo Something went wrong. Some directories may not exist.
